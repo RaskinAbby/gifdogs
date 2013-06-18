@@ -1,27 +1,16 @@
-<h1>Listing gifs</h1>
+<h1>List of Pictures</h1>
 
-<table>
-  <tr>
-    <th>Url</th>
-    <th>Note</th>
-    <th>Favorite</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<%= link_to "Add A New GIF", new_gif_url %>
 
-<% @gifs.each do |gif| %>
-  <tr>
-    <td><%= gif.url %></td>
-    <td><%= gif.note %></td>
-    <td><%= gif.favorite %></td>
-    <td><%= link_to 'Show', gif %></td>
-    <td><%= link_to 'Edit', edit_gif_path(gif) %></td>
-    <td><%= link_to 'Destroy', gif, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Gif', new_gif_path %>
+<ul>
+  <% @gifs.each do |gif| %>
+    <li>
+      <%= image_tag gif.url, :width => 200 %>
+      <p>
+        <%= link_to gif.note, gif_url(gif.id) %>
+        <%= link_to "Edit", edit_gif_url(gif.id) %>
+        <%= link_to "Delete", gif_url(gif.id), :method => :delete, :confirm => "Really?" %>
+      </p>
+    </li>
+  <% end %>
+</ul>
