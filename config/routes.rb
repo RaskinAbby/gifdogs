@@ -1,4 +1,7 @@
 Doggifs::Application.routes.draw do
+  resources :gifs
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
